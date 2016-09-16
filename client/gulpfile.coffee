@@ -47,6 +47,8 @@ gulp.task 'templates', ['jade'], ->
     .pipe ngTemplates
       filename: 'templates.js'
       module: 'hollaback'
+      path: (path, base) ->
+        path.replace(base, '/')
       standalone: false
     .pipe gulp.dest 'dist'
     .pipe connect.reload()

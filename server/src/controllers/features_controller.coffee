@@ -16,22 +16,33 @@ module.exports = do ->
       res.status 200
       res.send collection
 
-  show: (req, res) ->
+  upvote: (req, res) ->
     if not ObjectId.isValid req.params.id
       res.status 404
-      res.send 'invalid object id'
+      res.send 'invalid objectId'
       return
 
     Features.findById(req.params.id).then (obj) ->
       if not obj?
         res.status 404
-        res.send 'no pet found with the given id'
-      else if req.user?._id? and "#{obj.userId}" is "#{req.user._id}"
-        res.status 200
-        res.send obj
-      else if not obj.activeUntil? or not moment().isBefore(moment(obj.activeUntil))
-        res.status 400
-        res.send 'pet is not published'
+        res.send 'no feature was found with the given objectId'
+      else
+        obj.upvotes ?= 0
+        obj.upvotes++
+        obj.save().then ->
+          res.status 200
+          res.send obj
+
+  show: (req, res) ->
+    if not ObjectId.isValid req.params.id
+      res.status 404
+      res.send 'invalid objectId'
+      return
+
+    Features.findById(req.params.id).then (obj) ->
+      if not obj?
+        res.status 404
+        res.send 'no feature was found with the given objectId'
       else
         res.status 200
         res.send obj

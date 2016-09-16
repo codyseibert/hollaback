@@ -21,6 +21,7 @@ module.exports = do ->
 
   app.get '/features', FeaturesCtrl.index
   app.get '/features/:id', FeaturesCtrl.show
+  app.post '/features/:id/upvote', FeaturesCtrl.upvote
   app.post '/features', FeaturesCtrl.post
   app.put '/features/:id', FeaturesCtrl.put
 

@@ -1,1 +1,59 @@
 #feature-create
+  .container
+    .row
+      .col-md-8
+        h1 Request a Feature
+        
+        h4 We appreciate your feedback.<br>Help us turn <b>{{application.name}}</b> into something you'll love to use!
+        
+        form
+        
+          .form-group
+            label Title
+            input.form-control(
+              placeholder="title"
+              ng-model="feature.title"
+            )
+          
+          .form-group
+            label Description
+            text-angular(
+              ng-model="feature.description"
+              ta-toolbar="[['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo']]"
+            )
+        
+          .form-group
+            label Email (optional, but recommended)
+            input.form-control(
+              placeholder="email"
+              ng-model="feature.email"
+            )
+            
+          .form-group
+            label Phone Number (optional, but recommended)
+            input.form-control(
+              placeholder="phone number"
+              ng-model="feature.phone"
+              type="phone"
+            )
+            
+          .form-group
+            button.btn-primary.form-control(
+              ng-click="submit()"
+              type="submit"
+            ) Submit Feature
+            
+      .col-md-4
+        
+        h3 Guidelines
+        ul
+          li Keep your posts positive.  Negative comments might hurt our feelings =(
+          li Try to add as much description to your feature as possible.  The more you describe, the easier it is for us to implement it.
+          li Do not post bugs here.  If you want to report a bug, please post one at http://bugs
+        
+        h3 Suggestions
+        ul
+          li Please leave some form of contact information in case we really want your feature but need clarification on the specifications.
+          li Diagrams or images that illustrate your feature request are highly appreciated.  A picture is worth 1,000 words.
+        
+        

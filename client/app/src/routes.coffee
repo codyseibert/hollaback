@@ -15,20 +15,20 @@ module.exports = (
       views:
         'main':
           controller: 'FeaturesCtrl'
-          templateUrl: 'features/features.html'
+          templateUrl: '/features/features.html'
 
     .state 'features.create',
       url: '/create'
       views:
-        'main':
-          controller: 'FeatureCreateCtrl'
-          templateUrl: 'features/create/features_create.html'
+        'main@':
+          controller: 'FeaturesCreateCtrl'
+          templateUrl: '/features/create/features_create.html'
 
     .state 'features.show',
       url: '/:id'
       views:
-        'main':
-          controller: 'FeatureShowCtrl'
-          templateUrl: 'feature/show/features_show.html'
+        'main@':
+          controller: 'FeaturesShowCtrl'
+          templateUrl: '/features/show/features_show.html'
 
   return this

@@ -16,6 +16,11 @@ module.exports = [
         .then (response) ->
           response.data
 
+    upvote: (id) ->
+      $http.post "#{API_PATH}/features/#{id}/upvote"
+        .then (response) ->
+          response.data
+
     post: (feature) ->
       $http.post "#{API_PATH}/features", feature
         .then (response) ->

@@ -1,1 +1,39 @@
 #feature-show
+  .container
+    .row 
+      .col-md-12
+        h3
+          a(
+            ui-sref="features"
+          )
+            i.fa.fa-caret-left 
+            |  Search Features
+    
+    .row
+      .col-md-12
+        h1 {{feature.title}}
+    
+    .row
+      .col-md-6
+        
+        h3 {{feature.upvotes}} upvotes
+      
+        .description(
+          ng-bind-html="feature.description"
+        )
+        
+      .col-md-5.col-md-push-1
+        h3 Comments
+        .row.comment(
+          ng-repeat="comment in comments"
+        )
+          .col-md-4
+            .user
+              h4 {{comment.user}}
+              h5 {{comment.date}} 
+              h6
+                i.fa.fa-heart 
+                  span 14
+              
+          .col-md-8
+            .message "{{comment.message}}"

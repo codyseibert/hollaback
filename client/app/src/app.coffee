@@ -15,14 +15,11 @@ require '@iamadamjowett/angular-click-outside'
 require 'angular-inview'
 
 require 'autotrack'
-
-ga 'create', 'UA-77135326-2', 'auto'
-
-ga 'require', 'cleanUrlTracker'
-ga 'require', 'eventTracker'
-ga 'require', 'urlChangeTracker'
-
-ga 'send', 'pageview'
+# ga 'create', 'UA-77135326-2', 'auto'
+# ga 'require', 'cleanUrlTracker'
+# ga 'require', 'eventTracker'
+# ga 'require', 'urlChangeTracker'
+# ga 'send', 'pageview'
 
 app = require('angular').module('hollaback', [
   require 'angular-ui-router'
@@ -61,6 +58,7 @@ app.config ['$httpProvider', ($httpProvider) ->
 
 require './features'
 require './services'
+require './topnav'
 
 app.constant 'API_PATH', 'http://localhost:8081'
 

@@ -1,6 +1,67 @@
 #features
-  h1 Features
-  
-  button(
-    ui-sref="features.create"
-  ) Post New Feature!
+  .container
+    .row
+      .col-md-12
+        h1 <span class="ng-hide">Search </span>Features
+        
+        form.ng-hide
+          .form-group
+            label Status
+            input.form-control(
+              placeholder="search"
+            )
+          
+          .form-group 
+            label Keyword
+            input.form-control(
+              placeholder="search"
+            )
+            
+          .form-group
+            label Public / Private
+            input.form-control(
+              placeholder="search"
+            )
+          
+          .form-group
+            label Tags
+            input.form-control(
+                placeholder="tag"
+            )
+            
+          .form-group
+            label Age
+            input.form-control(
+              placeholder="age"
+            )
+            
+          .form-group
+            label Upvotes
+            input.form-control(
+              placeholder="upvotes"
+            )
+    
+      .col-md-8
+        .row.feature(
+          ng-repeat="feature in features | orderBy : 'upvotes' : true"
+        )
+          .col-md-1.upvotes
+            i.fa.fa-caret-up(
+              ng-click="upvote(feature)"
+            )
+            br
+            {{feature.upvotes}}
+          
+          .col-md-11.content(
+            ui-sref="features.show({id: feature._id})"
+          )
+            h3 {{feature.title || 'untitled'}}
+            .description(
+              ng-bind-html="feature.description"
+            )
+        
+      .col-md-4
+        h3 What are Features?
+        
+        p This page lists all of the features that have been requested by users like yourself.<br><br>If you have a good idea to make our application better, please feel free to request a feature <a ui-sref="features.create">here</a>.
+        
