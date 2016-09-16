@@ -9,6 +9,6 @@ RUN yum install -y nodejs
 RUN npm install -g gulp
 RUN yum install -y git
 
-EXPOSE 8080 35729
+EXPOSE 8082 35729
 
 CMD ["npm", "run", "serve"]

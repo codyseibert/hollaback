@@ -60,10 +60,31 @@ require './features'
 require './services'
 require './topnav'
 
-app.constant 'API_PATH', 'http://localhost:8081'
+app.constant 'API_PATH', 'http://localhost:8083'
 
 app.run [
+  '$location'
+  '$state'
+  'TokenService'
+  'ApplicationService'
   (
+    $location
+    $state
+    TokenService
+    ApplicationService
   ) ->
+
+    query = $location.search()
+
+    if query?.t?
+      TokenService.setToken $location.search().t
+
+    if query?.a?
+      ApplicationService.setApplication $location.search().a
+
+    if not TokenService.getToken()? or not ApplicationService.getApplication()?
+      $state.go 'error'
+    else
+      $state.go 'features'
 
 ]

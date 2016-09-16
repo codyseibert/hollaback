@@ -5,5 +5,7 @@ ObjectId = Schema.ObjectId
 module.exports = new Schema
   clientId: ObjectId
   name: String
-  logo: String
-  style: String # CSS used to style the page
+  # logo: String
+  baseUrl: String
+  validationUrl: String
+  # style: String # CSS used to style the page

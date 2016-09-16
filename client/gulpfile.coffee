@@ -74,13 +74,15 @@ gulp.task 'scripts', ['replace'], ->
 gulp.task 'replace', ['coffee'], ->
   if isProduction
     gulp.src(['tmp/js/app.js'])
-      .pipe(replace('http://localhost:8081', 'http://api.hollaback.com'))
+      .pipe(replace('http://localhost:8084', 'http://hollabackapi.seibertsoftwaresolutions.com'))
       .pipe(gulp.dest('tmp/js'))
 
 gulp.task 'connect', ->
   connect.server
     root: 'dist'
-    livereload: true
+    port: 8082
+    livereload:
+      port: 35730
     middleware: (connect, options) ->
       [
         modRewrite ['!\\.html|\\.otf|\\.jpg|\\.js|\\.svg|\\.ico|\\.ttf|\\.woff|\\.css|\\.png$ /index.html [L]']
