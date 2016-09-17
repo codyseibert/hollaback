@@ -31,4 +31,13 @@ module.exports = (
           controller: 'FeaturesShowCtrl'
           templateUrl: '/features/show/features_show.html'
 
+    .state 'error',
+      url: '/error'
+      params:
+        error: null
+      views:
+        'main@':
+          controller: 'ErrorCtrl'
+          templateUrl: '/error/error.html'
+
   return this

@@ -59,6 +59,7 @@ app.config ['$httpProvider', ($httpProvider) ->
 require './features'
 require './services'
 require './topnav'
+require './error'
 
 app.constant 'API_PATH', 'http://localhost:8083'
 
@@ -83,7 +84,7 @@ app.run [
       ApplicationService.setApplication $location.search().a
 
     if not TokenService.getToken()? or not ApplicationService.getApplication()?
-      $state.go 'error'
+      $state.go 'error', error: 'token or applicationId was not set correctly'
     else
       $state.go 'features'
 
