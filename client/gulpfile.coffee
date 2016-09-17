@@ -74,7 +74,7 @@ gulp.task 'scripts', ['replace'], ->
 gulp.task 'replace', ['coffee'], ->
   if isProduction
     gulp.src(['tmp/js/app.js'])
-      .pipe(replace('http://localhost:8084', 'http://hollabackapi.seibertsoftwaresolutions.com'))
+      .pipe(replace('http://localhost:8083', 'http://hollabackapi.seibertsoftwaresolutions.com'))
       .pipe(gulp.dest('tmp/js'))
 
 gulp.task 'connect', ->
