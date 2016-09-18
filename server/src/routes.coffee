@@ -11,6 +11,7 @@ upload = multer dest: '/tmp'
 module.exports = do ->
   app.get '/applications', ApplicationsCtrl.index
   app.post '/applications', ApplicationsCtrl.post
+  app.put '/applications/:id', ApplicationsCtrl.put
 
   app.get '/features', validateUserToken, FeaturesCtrl.index
   app.get '/features/:id', FeaturesCtrl.show
