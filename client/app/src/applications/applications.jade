@@ -1,0 +1,13 @@
+#applications
+  .container
+    .row
+      .col-md-12
+        h1 Your Applications
+        
+    .row
+      .col-md-12
+        .application(
+          ng-repeat="application in applications | orderBy : 'name'"
+          ui-sref="applications.show({id: application._id})"
+        )
+          .name {{application.name}}

@@ -1,22 +1,20 @@
 module.exports = [
-  'lodash'
-  '$q'
-  'localStorageService'
+  '$http'
+  'API_PATH'
   (
-    _
-    $q
-    localStorageService
+    $http
+    API_PATH
   ) ->
 
-    application = localStorageService.get 'application'
+    index: ->
+      $http.get "#{API_PATH}/applications"
+        .then (response) ->
+          response.data
 
-    getApplication: ->
-      application
+    show: (id) ->
+      $http.get "#{API_PATH}/applications/#{id}"
+        .then (response) ->
+          response.data
 
-    setApplication: (app) ->
-      application = app
-      localStorageService.set 'application', app
-      if not app?
-        localStorageService.remove 'application'
 
 ]

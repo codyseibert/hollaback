@@ -7,9 +7,10 @@ config = require '../config/config'
 module.exports = do ->
 
   index: (req, res) ->
-    Applications.find(req.query).then (application) ->
+    client = req.client
+    Applications.find(clientId: new ObjectId(client._id)).then (applications) ->
       res.status 200
-      res.send application
+      res.send applications
 
   show: (req, res) ->
     Applications.findById(req.params.id).then (application) ->

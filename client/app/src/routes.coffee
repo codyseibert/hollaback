@@ -31,12 +31,33 @@ module.exports = (
           controller: 'FeaturesShowCtrl'
           templateUrl: '/features/show/features_show.html'
 
+    .state 'applications',
+      url: '/applications'
+      views:
+        'main':
+          controller: 'ApplicationsCtrl'
+          templateUrl: '/applications/applications.html'
+
+    .state 'applications.create',
+      url: '/create'
+      views:
+        'main@':
+          controller: 'ApplicationsCreateCtrl'
+          templateUrl: '/applications/create/applications_create.html'
+
+    .state 'applications.show',
+      url: '/:id'
+      views:
+        'main@':
+          controller: 'ApplicationsShowCtrl'
+          templateUrl: '/applications/show/applications_show.html'
+
     .state 'error',
       url: '/error'
       params:
         error: null
       views:
-        'main@':
+        'main':
           controller: 'ErrorCtrl'
           templateUrl: '/error/error.html'
 
