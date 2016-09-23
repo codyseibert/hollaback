@@ -7,11 +7,10 @@ request = require 'request'
 
 module.exports = (req, res, next) ->
 
-  # TODO: Refactor to be joi?
-  applicationId = req.headers['x-application-id']
+  applicationId = req.query.applicationId or req.body.applicationId
   if not applicationId?
     res.status 400
-    res.send 'missing application id in "X-Application-Id"'
+    res.send 'missing applicationId from query or body'
     return
 
   token = req.headers['authorization']

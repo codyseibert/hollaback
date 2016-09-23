@@ -6,8 +6,8 @@ module.exports = [
     API_PATH
   ) ->
 
-    index: (id) ->
-      $http.get "#{API_PATH}/features"
+    index: (query) ->
+      $http.get "#{API_PATH}/features", params: query
         .then (response) ->
           response.data
 

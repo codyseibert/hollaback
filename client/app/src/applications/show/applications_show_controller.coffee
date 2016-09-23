@@ -11,13 +11,10 @@ module.exports = [
     ApplicationService
   ) ->
 
-    console.log 'they are here'
+    $scope.applicationId = $state.params.applicationId
 
-    applicationId = $state.params.id
-
-    ApplicationService.show applicationId
+    ApplicationService.show $scope.applicationId
       .then (application) ->
-        console.log application
         $scope.application = application
 
     return this

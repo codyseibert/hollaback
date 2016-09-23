@@ -61,6 +61,7 @@ require './services'
 require './topnav'
 require './error'
 require './applications'
+require './login'
 
 app.constant 'API_PATH', 'http://localhost:8083'
 
@@ -81,10 +82,7 @@ app.run [
     if query?.t?
       TokenService.setToken $location.search().t
 
-    if query?.a?
-      HeaderService.setApplication $location.search().a
-
-    if not TokenService.getToken()? or not HeaderService.getApplication()?
-      $state.go 'error', error: 'token or applicationId was not set correctly'
+    # if not TokenService.getToken()? or not HeaderService.getApplication()?
+      # $state.go 'error', error: 'token or applicationId was not set correctly'
 
 ]

@@ -10,27 +10,6 @@ module.exports = (
 
   $stateProvider
 
-    .state 'features',
-      url: '/features'
-      views:
-        'main':
-          controller: 'FeaturesCtrl'
-          templateUrl: '/features/features.html'
-
-    .state 'features.create',
-      url: '/create'
-      views:
-        'main@':
-          controller: 'FeaturesCreateCtrl'
-          templateUrl: '/features/create/features_create.html'
-
-    .state 'features.show',
-      url: '/:id'
-      views:
-        'main@':
-          controller: 'FeaturesShowCtrl'
-          templateUrl: '/features/show/features_show.html'
-
     .state 'applications',
       url: '/applications'
       views:
@@ -46,11 +25,35 @@ module.exports = (
           templateUrl: '/applications/create/applications_create.html'
 
     .state 'applications.show',
-      url: '/:id'
+      url: '/:applicationId'
       views:
         'main@':
           controller: 'ApplicationsShowCtrl'
           templateUrl: '/applications/show/applications_show.html'
+
+    .state 'features',
+      parent: 'applications.show'
+      url: '/features'
+      views:
+        'main@':
+          controller: 'FeaturesCtrl'
+          templateUrl: '/features/features.html'
+
+    .state 'features.create',
+      parent: 'features'
+      url: '/create'
+      views:
+        'main@':
+          controller: 'FeaturesCreateCtrl'
+          templateUrl: '/features/create/features_create.html'
+
+    .state 'features.show',
+      parent: 'features'
+      url: '/:featureId'
+      views:
+        'main@':
+          controller: 'FeaturesShowCtrl'
+          templateUrl: '/features/show/features_show.html'
 
     .state 'error',
       url: '/error'
@@ -60,5 +63,12 @@ module.exports = (
         'main':
           controller: 'ErrorCtrl'
           templateUrl: '/error/error.html'
+
+    .state 'login',
+      url: '/login'
+      views:
+        'main':
+          controller: 'LoginCtrl'
+          templateUrl: '/login/login.html'
 
   return this

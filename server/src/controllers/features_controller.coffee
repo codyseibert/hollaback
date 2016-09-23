@@ -7,12 +7,7 @@ moment = require 'moment'
 module.exports = do ->
 
   index: (req, res) ->
-    # query = req.query
-    # if req.query['_id$in']
-    #   query =
-    #     '_id':
-    #       $in: req.query['_id$in'].split ','
-    Features.find().then (collection) ->
+    Features.find(req.query).then (collection) ->
       res.status 200
       res.send collection
 

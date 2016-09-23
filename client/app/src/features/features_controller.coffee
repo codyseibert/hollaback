@@ -2,14 +2,18 @@
 module.exports = [
   '$scope'
   '$state'
+  '$stateParams'
   'FeatureService'
   (
     $scope
     $state
+    $stateParams
     FeatureService
   ) ->
 
-    FeatureService.index()
+    $scope.applicationId = $stateParams.applicationId
+
+    FeatureService.index applicationId: $scope.applicationId
       .then (features) ->
         $scope.features = features
       .catch (err) ->

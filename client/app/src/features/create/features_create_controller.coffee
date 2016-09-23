@@ -1,14 +1,19 @@
 module.exports = [
   '$scope'
   '$state'
+  '$stateParams'
   'FeatureService'
   (
     $scope
     $state
+    $stateParams
     FeatureService
   ) ->
 
+    applicationId = $stateParams.applicationId
+
     $scope.feature = {}
+    $scope.feature.applicationId = applicationId
 
     $scope.application =
       name: 'Holla Back'
@@ -16,8 +21,7 @@ module.exports = [
     $scope.submit = ->
       FeatureService.post $scope.feature
         .then (feature) ->
-          # TODO: show a thank you modal
-          $state.go 'features'
+          $state.go 'features', applicationId: applicationId
 
     return this
 

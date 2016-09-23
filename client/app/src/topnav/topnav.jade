@@ -1,19 +1,34 @@
-.wrapper(
-  ng-hide="hide"
-)
-  .logo {{application.name}}
+.wrapper
+  .logo
+    span(
+      ng-show="isLoggedIn() && isApplicationView()"
+    ) {{application.name}}
+    
+    span(
+      ng-show="!isLoggedIn() || !isApplicationView()"
+    ) HollaBack.IO
 
   .links
     a(
+      ng-show="isLoggedIn() && isApplicationView()"
       ui-sref="features.create"
     )
       .fa.fa-plus 
       | Request a Feature
+      
     a(
+      ng-show="isLoggedIn() && isApplicationView()"
       ui-sref="features"
     )
       .fa.fa-search
       | Search Features
+      
+    a(
+      ng-show="isLoggedIn() && !isApplicationView()"
+      ui-sref="applications"
+    )
+      .fa.fa-cubes 
+      | Applications
 
   //- .menu
   //-   .fa.fa-gears 

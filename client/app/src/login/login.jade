@@ -1,0 +1,25 @@
+#login
+  .container
+    .row
+      .col-md-4.col-md-push-4
+        h1 Login
+        
+        form
+          .form-group
+            input.form-control(
+              ng-model="user.email"
+              placeholder="email"
+              type="email"
+            )
+          
+          .form-group 
+            input.form-control(
+              ng-model="user.password"
+              placeholder="password"
+              type="password"
+            )
+          
+          .form-group
+            button.btn.btn-primary.form-control(
+              ng-click="login()"
+            ) Login

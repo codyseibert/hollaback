@@ -8,6 +8,6 @@
       .col-md-12
         .application(
           ng-repeat="application in applications | orderBy : 'name'"
-          ui-sref="applications.show({id: application._id})"
+          ui-sref="applications.show({applicationId: application._id})"
         )
           .name {{application.name}}

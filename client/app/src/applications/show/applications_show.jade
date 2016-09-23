@@ -3,3 +3,7 @@
     .row
       .col-md-12
         h1 {{application.name}}
+        
+        h2(
+          ui-sref="features({applicationId: applicationId})"
+        ) View Feature Requests
