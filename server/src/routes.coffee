@@ -29,14 +29,14 @@ module.exports = do ->
   app.put '/applications/:id', ApplicationsCtrl.put
 
   # TODO: Validate the user logged in has access to the application provided in the header
-  app.get '/features', validateUserToken, FeaturesCtrl.index
+  app.get '/features', FeaturesCtrl.index
 
   # TODO: Validate the user logged in has access to the application provided in the header
   app.get '/features/:id', FeaturesCtrl.show
 
   # TODO: A user can upload a feature only once
   # app.post '/features/:id/upvote', FeaturesCtrl.upvote
-  app.post '/features', FeaturesCtrl.post
+  app.post '/features', validateUserToken, FeaturesCtrl.post
 
   # TODO: Validate the user owns the feature
   app.put '/features/:id', FeaturesCtrl.put

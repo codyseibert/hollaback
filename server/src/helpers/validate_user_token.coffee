@@ -54,4 +54,5 @@ module.exports = (req, res, next) ->
           res.status 403
           res.send 'validation failed'
         else
+          req.user = body
           next()

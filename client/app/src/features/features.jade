@@ -52,13 +52,20 @@
             br
             {{feature.upvotes}}
           
-          .col-md-11.content(
+          .col-md-9.content(
             ui-sref="features.show({id: feature._id})"
           )
             h3 {{feature.title || 'untitled'}}
             .description(
               ng-bind-html="feature.description"
             )
+            
+          .col-md-2.user
+            .image(
+              ng-style="{'background-image': 'url(' + feature.user.image + ')'}"
+            )
+            .name 
+              {{feature.user.name}}
         
       .col-md-4
         h3 What are Features?

@@ -10,7 +10,7 @@ module.exports = (req, res, next) ->
     token = auth.split(' ')[1]
     jwt.verify token, TOKEN_PASSWORD, (err, decoded) ->
       if err?
-        req.status 400
+        res.status 400
         res.send 'invalid client token'
       else
         req.client = decoded._doc

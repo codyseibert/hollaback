@@ -8,4 +8,5 @@ module.exports = new Schema
   # logo: String
   baseUrl: String
   validationUrl: String
+  usersUrl: String
   # style: String # CSS used to style the page

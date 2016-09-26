@@ -1,15 +1,49 @@
 models = require '../models/models'
 Features = models.Features
+Applications = models.Applications
 ObjectId = require('mongoose').Types.ObjectId
 lodash = require 'lodash'
 moment = require 'moment'
+request = require 'request'
+_ =  require 'lodash'
 
 module.exports = do ->
 
   index: (req, res) ->
-    Features.find(req.query).then (collection) ->
-      res.status 200
-      res.send collection
+    applicationId = req.query.applicationId
+
+    Applications.findById(applicationId).then (application) ->
+      if not application?
+        res.status 400
+        res.send 'application not found'
+      else
+        Features.find(applicationId: applicationId).then (features) ->
+          features = _.map features, (feature) -> feature.toObject()
+          request
+            uri: application.usersUrl or 'http://localhost:8081/holla/users'
+            method: "GET"
+            json: true
+            headers:
+              "content-type": "application/json"
+            qs:
+              '_id': (_.map features, (feature) ->
+                feature.userId
+              ).join ','
+          , (err, response, users) ->
+            if err?
+              res.status 400
+              res.send 'there was an error hitting the applications usersUrl'
+            else
+              _.each features, (feature) ->
+                user = _.find users, (user) -> "#{user.userId}" is "#{feature.userId}"
+                feature.user ?=
+                  image: null
+                  name: 'Anonymous'
+                if user?
+                  feature.user.image = user.image
+                  feature.user.name = user.name
+              res.status 200
+              res.send features
 
   upvote: (req, res) ->
     if not ObjectId.isValid req.params.id
@@ -43,6 +77,7 @@ module.exports = do ->
         res.send obj
 
   post: (req, res) ->
+    req.body.userId = req.user.userId
     Features.create(req.body)
       .then (obj) ->
         res.status 200
