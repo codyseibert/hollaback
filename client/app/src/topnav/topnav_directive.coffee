@@ -2,12 +2,12 @@ module.exports = [
   '$window'
   '$rootScope'
   'TokenService'
-  'HeaderService'
+  'UserService'
   (
     $window
     $rootScope
     TokenService
-    HeaderService
+    UserService
   ) ->
 
     restrict: 'E'
@@ -19,8 +19,8 @@ module.exports = [
       scope.isLoggedIn = ->
         TokenService.getToken()?
 
-      scope.isApplicationView = ->
-        HeaderService.getApplication()?
+      scope.isClient = ->
+        UserService.isClient()
 
       # $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
       #   if toState.name is 'error'

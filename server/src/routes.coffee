@@ -8,6 +8,7 @@ LoginCtrl = require './controllers/login_controller'
 validateUserToken = require './helpers/validate_user_token'
 validateClientToken = require './helpers/validate_client_token'
 hasAccessToApplication = require './helpers/has_access_to_application'
+hasAccessToFeature = require './helpers/has_access_to_feature'
 
 multer = require 'multer'
 upload = multer dest: '/tmp'
@@ -35,7 +36,8 @@ module.exports = do ->
   app.get '/features/:id', FeaturesCtrl.show
 
   # TODO: A user can upload a feature only once
-  # app.post '/features/:id/upvote', FeaturesCtrl.upvote
+  app.post '/features/:id/upvote', hasAccessToFeature, FeaturesCtrl.upvote
+
   app.post '/features', validateUserToken, FeaturesCtrl.post
 
   # TODO: Validate the user owns the feature

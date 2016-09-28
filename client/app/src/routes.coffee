@@ -71,4 +71,11 @@ module.exports = (
           controller: 'LoginCtrl'
           templateUrl: '/login/login.html'
 
+    .state 'signup',
+      url: '/signup'
+      views:
+        'main':
+          controller: 'SignupCtrl'
+          templateUrl: '/signup/signup.html'
+
   return this

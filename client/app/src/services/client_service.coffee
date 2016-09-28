@@ -16,23 +16,13 @@ module.exports = [
     API_PATH
   ) ->
 
-    getUser: ->
-      token = TokenService.getToken()
-      return null if not token?
-      decode = jwt.decode token
-      return null if not decode?
-      decode
-
-    isClient: ->
-      @getUser().isClient?
-
-    get: (userId) ->
-      $http.get "#{API_PATH}/users/#{userId}"
+    get: (clientId) ->
+      $http.get "#{API_PATH}/clients/#{clientId}"
         .then (response) ->
           response.data
 
     post: (user) ->
-      $http.post "#{API_PATH}/users", user
+      $http.post "#{API_PATH}/clients", user
         .then (response) ->
           response.data
 

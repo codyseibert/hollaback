@@ -1,0 +1,39 @@
+#login
+  .container
+    .row
+      .col-md-4.col-md-push-4
+        h1 Sign Up
+        
+        form
+          .form-group
+            input.form-control(
+              ng-model="user.email"
+              placeholder="email"
+              type="email"
+            )
+          
+          .form-group 
+            input.form-control(
+              ng-model="user.password"
+              placeholder="password"
+              type="password"
+            )
+            
+          .form-group
+            input.form-control(
+              ng-model="user.repeat"
+              placeholder="repeat password"
+              type="password"
+            )
+          
+          .form-group
+            button.btn.btn-primary.form-control(
+              ng-click="register()"
+            ) Sign Up
+  
+    .row
+      .col-md-4.col-md-push-4
+        .error(
+          ng-if="error"
+        )
+          {{error}}

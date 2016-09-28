@@ -20,12 +20,15 @@ module.exports = do ->
           res.status 404
           res.send 'client not found'
         else
+          client = client.toObject()
+
           hash = crypto
             .createHmac 'sha1', client.salt
             .update password
             .digest 'hex'
 
           if hash is client.password
+            client.isClient = true
             jwt.sign client, TOKEN_PASSWORD, algorithm: 'HS256', (err, token) ->
               res.status 200
               res.send token

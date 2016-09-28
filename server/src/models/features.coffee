@@ -15,6 +15,7 @@ module.exports = new Schema
   upvotes:
     type: Number
     default: 0
+  upvoteUserIds: Array
   status:
     type: String # MVP
     default: 'open'

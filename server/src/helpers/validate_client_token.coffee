@@ -13,7 +13,7 @@ module.exports = (req, res, next) ->
         res.status 400
         res.send 'invalid client token'
       else
-        req.client = decoded._doc
+        req.client = decoded
         next()
   catch err
     res.status 401

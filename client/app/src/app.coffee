@@ -62,6 +62,7 @@ require './topnav'
 require './error'
 require './applications'
 require './login'
+require './signup'
 
 app.constant 'API_PATH', 'http://localhost:8083'
 

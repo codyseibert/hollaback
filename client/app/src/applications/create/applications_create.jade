@@ -3,3 +3,26 @@
     .row
       .col-md-12
         h1 Create an Application
+        
+        form
+          .form-group
+            label Application Name
+            p The application name will be displayed in the top navigation bar for users to view.
+            
+            input.form-control(
+              ng-model="application.name"
+              placeholder="Your Application Name"
+            )
+          
+          .form-group 
+            label Validation Url
+            p The <b>validation url</b> is used by HollaBack to verify the user making requests against our service is indeed a validate user of your system.  Before we allow the users to excute actions such as posting, updating, and upvoting features, we will validate their JWT token against your endpoint.
+            input.form-control(
+              ng-model="application.validationUrl"
+              placeholder="http://api.example.com/validate"
+            )
+            
+          .form-group
+            button.btn.btn-primary.form-control(
+              ng-click="create()"
+            ) Create My Application

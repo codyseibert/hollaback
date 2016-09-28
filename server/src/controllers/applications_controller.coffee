@@ -22,6 +22,7 @@ module.exports = do ->
         res.send application
 
   post: (req, res) ->
+    req.body.clientId = req.client._id
     Applications.create(req.body).then (application) ->
       res.status 200
       res.send application

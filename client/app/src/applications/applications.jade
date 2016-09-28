@@ -11,3 +11,14 @@
           ui-sref="applications.show({applicationId: application._id})"
         )
           .name {{application.name}}
+          
+    .row(
+      ng-show="applications.length <= 0"
+    )
+      .col-md-12
+        .create-new
+          h1 You haven't created any applications.  In order to start getting feature request, you must first create an application
+          
+          button.btn.btn-primary(
+            ui-sref="applications.create"
+          ) Create an Application
