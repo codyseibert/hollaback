@@ -6,8 +6,12 @@
         
         button.btn.btn-secondary(
           ui-sref="features({applicationId: applicationId})"
-        ) View Feature Requests
+        ) 
+          i.fa.fa-eye
+          | View Feature Requests
         
-        button.btn.btn-primary(
-          ui-sref="features.create({applicationId: applicationId})"
-        ) Create Request
+        button.btn.btn-secondary(
+          ui-sref="applications.edit({applicationId: applicationId})"
+        ) 
+          i.fa.fa-pencil 
+          | Edit

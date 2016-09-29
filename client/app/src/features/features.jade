@@ -42,12 +42,22 @@
             )
     
       .col-md-8
+        div(
+          ng-show="features.length <= 0"
+        )
+          h2 There are no current open feature requests
+          
+          button.btn.btn-primary(
+            ui-sref="features.create({applicationId: applicationId})"
+          ) Request a Feature
+          
         .row.feature(
           ng-repeat="feature in features | orderBy : 'upvotes' : true"
         )
           .col-md-1.upvotes
             i.fa.fa-caret-up(
               ng-click="upvote(feature)"
+              ng-hide="hasVoted(feature)"
             )
             br
             {{feature.upvotes}}

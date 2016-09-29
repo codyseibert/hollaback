@@ -21,5 +21,10 @@ module.exports = [
         .then (response) ->
           response.data
 
+    put: (application) ->
+      $http.put "#{API_PATH}/applications/#{application._id}", application
+        .then (response) ->
+          response.data
+
 
 ]

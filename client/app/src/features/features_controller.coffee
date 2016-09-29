@@ -4,11 +4,15 @@ module.exports = [
   '$state'
   '$stateParams'
   'FeatureService'
+  'UserService'
+  'lodash'
   (
     $scope
     $state
     $stateParams
     FeatureService
+    UserService
+    _
   ) ->
 
     $scope.applicationId = $stateParams.applicationId
@@ -23,6 +27,10 @@ module.exports = [
       FeatureService.upvote feature._id
         .then (f) ->
           feature.upvotes = f.upvotes
+          feature.upvoteUserIds.push UserService.getUser()._id
+
+    $scope.hasVoted = (feature) ->
+      _.find(feature.upvoteUserIds, (user) -> user is UserService.getUser()._id)?
 
     return this
 

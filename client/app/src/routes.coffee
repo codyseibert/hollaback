@@ -31,6 +31,14 @@ module.exports = (
           controller: 'ApplicationsShowCtrl'
           templateUrl: '/applications/show/applications_show.html'
 
+    .state 'applications.edit',
+      parent: 'applications.show'
+      url: '/edit'
+      views:
+        'main@':
+          controller: 'ApplicationsEditCtrl'
+          templateUrl: '/applications/edit/applications_edit.html'
+
     .state 'features',
       parent: 'applications.show'
       url: '/features'

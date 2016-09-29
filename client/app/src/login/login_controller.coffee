@@ -4,11 +4,13 @@ module.exports = [
   '$state'
   'SecurityService'
   'HeaderService'
+  'TokenService'
   (
     $scope
     $state
     SecurityService
     HeaderService
+    TokenService
   ) ->
 
     $scope.user = {}

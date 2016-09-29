@@ -27,7 +27,7 @@ module.exports = do ->
   app.post '/applications', validateClientToken, ApplicationsCtrl.post
 
   # TODO: Validate the user logged in is a client and has access to the application
-  app.put '/applications/:id', ApplicationsCtrl.put
+  app.put '/applications/:id', validateClientToken, hasAccessToApplication, ApplicationsCtrl.put
 
   # TODO: Validate the user logged in has access to the application provided in the header
   app.get '/features', FeaturesCtrl.index
